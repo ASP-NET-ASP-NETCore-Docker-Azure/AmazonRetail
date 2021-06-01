@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<h2 class="h2" align=center>Cart Page</h2>
+<table class="table">
+    <tr>
+        <th>
+            Options
+        </th>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            UnitPrice
+        </th>
+        <th>
+            Summary
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Sub Total
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.cart)
+    {
+<tr>
+    <td align="center"><a asp-controller="Cart" asp-action="remove" asp-route-id=@item.Product.Id>Remove</a></td>
+    @*href="Cart/remove/@item.Product.Id"*@
+    <td>@item.Product.Id</td>
+    <td>@item.Product.Name</td>
+    <td>@item.Product.UnitPrice</td>
+    <td>@item.Product.Summary</td>
+    <td><img src="~/images/@item.Product.ImageFile" width="60" height="60"></td>
+    <td>@item.Quantity</td>
+    <td>@(item.Product.UnitPrice*item.Quantity)</td>
+</tr>
+    }
+    <tr align="right">
+        <td>
+            @ViewBag.Total
+        </td>
+    </tr>
+    <tr>
+        <td><a class="btn-lg btn-outline-dark" asp-controller="Product" asp-action="Index" asp-route-id="/">Continue Shopping</a> </td>
+        @* href="Product/Index"*@
+        <td><a class="btn-lg btn-outline-success" asp-controller="Checkout">Go To Checkout</a></td>
+        @*href="Checkout"*@
+    </tr>
+</table>
+<br />
+

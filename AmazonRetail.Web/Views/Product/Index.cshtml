@@ -1,0 +1,54 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+<h1 class="h1" align=center>Product List</h1>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            UnitPrice
+        </th>
+        <th>
+            UnitInStock
+        </th>
+        <th>
+            Summary
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Stars
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Buy
+        </th>
+    </tr>
+    @foreach (var product in ViewBag.products)
+    {
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Name</td>
+            <td>@product.UnitPrice</td>
+            <td>@product.UnitsInStock</td>
+            <td>@product.Summary</td>
+            <td>@product.Description</td>
+            <td>@product.Star</td>
+            <td><img src="~/images/@product.ImageFile" width="60" height="60"></td>
+            <td align="center"><a asp-controller="Cart" asp-action="Buy" asp-route-id=@product.Id>Buy Now</a></td>
+        </tr>
+    }
+</table>
+@*href="Cart/Buy/@product.Id"*@

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 align="center">Checkout Page</h1>
+<table class="table">
+    <tr>
+        <td>
+            Total Amount to be Paid
+        </td>
+        <td>
+            @ViewBag.Total
+        </td>
+        <td>
+            <a href="Product">Continue Shopping</a>
+        </td>
+    </tr>
+</table>
+<a href="Pay"><button class="subscribr_bt">Make Payment</button></a>
